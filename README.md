@@ -1,4 +1,8 @@
 # Tail Risk Estimation with the Hill Estimator
+![banner](results/figures/banner.svg)
+![Python](https://img.shields.io/badge/python-3.11-e8a33d?style=flat-square&labelColor=0e0e10)
+![License](https://img.shields.io/badge/license-MIT-e8a33d?style=flat-square&labelColor=0e0e10)
+![Status](https://img.shields.io/badge/status-complete-4fb8a8?style=flat-square&labelColor=0e0e10)
 
 Estimating the tail index of real equity returns using the Hill estimator,
 and showing where Gaussian Value-at-Risk breaks down.
@@ -6,7 +10,7 @@ and showing where Gaussian Value-at-Risk breaks down.
 ## Idea
 
 Equity returns are widely modeled as normally distributed, but extreme
-losses (crashes) happen far more often -- and in tighter clusters -- than
+losses (crashes) happen far more often and in tighter clusters than
 a Gaussian model predicts. This project:
 
 1. Estimates the tail index (alpha) of real equity index losses using the
@@ -28,7 +32,7 @@ a Gaussian model predicts. This project:
 | EuroStoxx 50  | 2.57  |
 
 All four major indices converge to alpha ~2.5-2.7 in the Hill plot plateau,
-well below the alpha ~3-5 range often cited for equities -- suggesting
+well below the alpha ~3-5 range often cited for equities suggesting
 heavier tails than a naive Gaussian model would assume. Data: 2004-2026
 (22 years), covering the 2008 financial crisis and the 2020 COVID crash.
 
@@ -44,7 +48,7 @@ heavier tails than a naive Gaussian model would assume. Data: 2004-2026
 | Observed / expected | 2.73x |
 
 A Gaussian VaR model breaches its own 99% confidence threshold **2.73x more
-often** than it should -- meaning a risk manager relying on this model is
+often** than it should meaning a risk manager relying on this model is
 caught off guard far more frequently than they believe.
 
 ### Breach clustering
@@ -58,17 +62,17 @@ caught off guard far more frequently than they believe.
 
 The large gap between mean and median gap length is the signature of
 clustering: breaches pile up during crisis windows (2008-09, 2011-12,
-2020, 2022) and are nearly absent during calm periods -- violating the
+2020, 2022) and are nearly absent during calm periods violating the
 independence assumption baked into the Gaussian VaR model.
 
 ![Breach timeline](results/figures/var_breaches_timeline.png)
 
 ## Structure
 
-- `src/data_loader.py` -- download prices, compute log-returns and losses
-- `src/hill_estimator.py` -- Hill estimator implementation
-- `src/var_backtest.py` -- Gaussian VaR backtest + breach detection
-- `notebooks/01_analysis.ipynb` -- full analysis, plots, and interpretation
+- `src/data_loader.py` : download prices, compute log-returns and losses
+- `src/hill_estimator.py` : Hill estimator implementation
+- `src/var_backtest.py` : Gaussian VaR backtest + breach detection
+- `notebooks/01_analysis.ipynb` : full analysis, plots, and interpretation
 
 ## Setup
 
@@ -83,7 +87,7 @@ pip install -r requirements.txt
   too small and the estimate is noisy, too large and non-extreme losses
   contaminate it. `k=200` was chosen by inspecting the Hill plot plateau
   across all four indices.
-- Log-returns are used throughout (standard in quantitative finance --
+- Log-returns are used throughout (standard in quantitative finance
   additive across time, well-behaved for small daily moves).
 - VaR is computed with a 250-trading-day rolling window (~1 year), so the
   first year of data has no VaR estimate.
