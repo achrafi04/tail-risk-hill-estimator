@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="160" viewBox="0 0 1000 160">
+  <rect width="1000" height="160" fill="#0e0e10"/>
+  <text x="40" y="65" font-family="monospace" font-size="30" fill="#f5f5f5">TAIL RISK ESTIMATION</text>
+  <text x="40" y="100" font-family="monospace" font-size="16" fill="#a1a1a6">Hill estimator / Gaussian VaR backtest / equity tail index</text>
+  <polyline points="40,135 120,120 200,140 280,110 360,130 440,95 520,125 600,105 680,120 760,90 840,115 920,100"
+            fill="none" stroke="#e8a33d" stroke-width="2"/>
+</svg>

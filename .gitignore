@@ -8,4 +8,5 @@ results/figures/*
 !results/figures/.gitkeep
 !results/figures/hill_plot_comparison.png
 !results/figures/var_breaches_timeline.png
+!results/figures/banner.svg
 .DS_Store
